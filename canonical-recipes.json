@@ -1,15 +1,14 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-07T00:00:00Z",
+  "updatedAt": "2026-04-08T00:00:00Z",
   "recipes": [
     {
-      "fingerprint": "14c96a0a5fccacfa",
+      "fingerprint": "2dd574f31f858724",
       "name": "Reggie's Portra",
       "source": "https://fujixweekly.com/2022/06/11/fujifilm-x-trans-iv-film-simulation-recipe-reggies-portra/",
       "sensor": "X-Trans V",
       "recipe": {
         "filmSimulation": "Classic Chrome",
-        "dynamicRange": "Auto",
         "highlightTone": "-1",
         "shadowTone": "-1",
         "color": "+2",
