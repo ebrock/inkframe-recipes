@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-07T00:00:00Z",
+  "recipes": [
+    {
+      "fingerprint": "14c96a0a5fccacfa",
+      "name": "Reggie's Portra",
+      "source": "https://www.reggiesphotos.com/fujifilm-x100vi-film-simulation-recipes",
+      "sensor": "X-Trans V",
+      "recipe": {
+        "filmSimulation": "Classic Chrome",
+        "dynamicRange": "Auto",
+        "highlightTone": "-1",
+        "shadowTone": "-1",
+        "color": "+2",
+        "noiseReduction": "-4",
+        "sharpness": "-2",
+        "clarity": "0",
+        "grainEffect": "Weak",
+        "grainSize": "Small",
+        "colorChromeEffect": "Strong",
+        "colorChromeFXBlue": "Weak",
+        "whiteBalance": "Auto",
+        "whiteBalanceFineTune": "Red +2, Blue -4"
+      }
+    }
+  ]
+}
