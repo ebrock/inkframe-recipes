@@ -1,6 +1,6 @@
 # InkFrame Canonical Recipes
 
-Community-maintained Fujifilm recipe fingerprints for automatic recipe identification in [InkFrame](https://github.com/ebrock/InkFrame).
+Fujifilm recipe fingerprints curated by [@ebrock](https://github.com/ebrock) for automatic recipe identification in [InkFrame](https://github.com/ebrock/InkFrame).
 
 When you shoot with a known recipe, InkFrame matches your photo's EXIF data against this list and tells you which recipe was used — no manual tagging required.
 
@@ -108,14 +108,13 @@ Per-shot fields (`iso`, `exposureCompensation`) are excluded — they vary betwe
 
 ## Contributing
 
-To add a recipe, open a PR that adds an entry to `canonical-recipes.json`:
-
-1. Set all recipe fields to match the published recipe exactly
-2. Compute the fingerprint using the algorithm above (or use InkFrame to save the recipe locally and copy the fingerprint from the library)
-3. Update the `updatedAt` timestamp
-4. Include the source URL so others can reference the original
+To suggest a recipe, open an issue using the **Recipe Submission** template. Export the recipe JSON from InkFrame and paste it in. The maintainer will review and apply the `approved` label — a GitHub Action will handle the rest automatically.
 
 The sync service verifies fingerprint integrity on import — entries with mismatched fingerprints are silently skipped.
+
+## Hosting your own canonical repo
+
+This repo follows an open schema. You can fork it (or start fresh) to maintain your own recipe library. InkFrame can be pointed at any URL serving a `canonical-recipes.json` that matches the schema above.
 
 ## License
 
