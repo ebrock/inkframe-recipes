@@ -60,13 +60,12 @@ jobs:
           BRANCH: ${{ steps.slug.outputs.branch }}
           RECIPE_NAME: ${{ steps.slug.outputs.name }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_URL: ${{ github.event.issue.html_url }}
         run: |
+          printf 'Adds the **%s** recipe to the canonical library.\n\nCloses #%s' \
+            "${RECIPE_NAME}" "${ISSUE_NUMBER}" > /tmp/pr_body.txt
           pr_url=$(gh pr create \
             --title "Add recipe: ${RECIPE_NAME}" \
-            --body "Adds the **${RECIPE_NAME}** recipe to the canonical library.
-
-Closes #${ISSUE_NUMBER}" \
+            --body-file /tmp/pr_body.txt \
             --base main \
             --head "$BRANCH")
           echo "url=${pr_url}" >> "$GITHUB_OUTPUT"
