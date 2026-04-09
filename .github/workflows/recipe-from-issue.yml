@@ -51,7 +51,7 @@ jobs:
           git checkout -b "$BRANCH"
           git add canonical-recipes.json
           git commit -m "feat: add ${RECIPE_NAME} recipe (#${ISSUE_NUMBER})"
-          git push origin "$BRANCH"
+          git push --force origin "$BRANCH"
 
       - name: Create pull request
         id: pr
