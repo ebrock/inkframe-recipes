@@ -1,0 +1,48 @@
+name: Recipe Submission
+description: Submit a Fujifilm film simulation recipe to the canonical library
+title: "Recipe: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Export your recipe from InkFrame and paste the JSON below.
+        The fingerprint is computed automatically by InkFrame — no manual calculation needed.
+
+  - type: input
+    id: name
+    attributes:
+      label: Recipe Name
+      placeholder: e.g. Kodak Gold 200
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sensor
+    attributes:
+      label: Target Sensor
+      options:
+        - X-Trans II
+        - X-Trans III
+        - X-Trans IV
+        - X-Trans V
+        - GFX
+        - Bayer
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: Link to where this recipe was published (optional)
+      placeholder: https://fujixweekly.com/...
+
+  - type: textarea
+    id: recipe_json
+    attributes:
+      label: Recipe JSON
+      description: Paste the full JSON exported from InkFrame. Must include `fingerprint`, `name`, and `recipe` fields.
+      render: json
+    validations:
+      required: true

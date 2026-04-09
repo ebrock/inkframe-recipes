@@ -1,0 +1,92 @@
+name: Create Recipe PR from Issue
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  create-recipe-pr:
+    if: |
+      github.event.label.name == 'approved' &&
+      github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Write issue body to file
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$ISSUE_BODY" > /tmp/issue_body.txt
+
+      - name: Build recipe and update canonical-recipes.json
+        id: build
+        run: |
+          python3 .github/scripts/build_recipe.py \
+            --issue-body /tmp/issue_body.txt \
+            --output canonical-recipes.json
+
+      - name: Get recipe name for branch
+        id: slug
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          # Strip "Recipe: " prefix if present, then slugify
+          name="${ISSUE_TITLE#Recipe: }"
+          slug=$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/-\+/-/g' | sed 's/^-\|-$//g')
+          echo "branch=add-recipe/${slug}" >> "$GITHUB_OUTPUT"
+          echo "name=${name}" >> "$GITHUB_OUTPUT"
+
+      - name: Create branch, commit, and push
+        env:
+          BRANCH: ${{ steps.slug.outputs.branch }}
+          RECIPE_NAME: ${{ steps.slug.outputs.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add canonical-recipes.json
+          git commit -m "feat: add ${RECIPE_NAME} recipe (#${ISSUE_NUMBER})"
+          git push origin "$BRANCH"
+
+      - name: Create pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.slug.outputs.branch }}
+          RECIPE_NAME: ${{ steps.slug.outputs.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          pr_url=$(gh pr create \
+            --title "Add recipe: ${RECIPE_NAME}" \
+            --body "Adds the **${RECIPE_NAME}** recipe to the canonical library.
+
+Closes #${ISSUE_NUMBER}" \
+            --base main \
+            --head "$BRANCH")
+          echo "url=${pr_url}" >> "$GITHUB_OUTPUT"
+
+      - name: Comment on issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --body "PR created: ${PR_URL}"
+
+      - name: Comment on issue if workflow failed
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --body "The recipe PR workflow failed. Please check the [Actions log](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details."
