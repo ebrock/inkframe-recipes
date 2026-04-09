@@ -28,7 +28,7 @@
       "name": "Kodak Gold 200",
       "recipe": {
         "clarity": "-2",
-        "color": " 3",
+        "color": "+3",
         "colorChromeEffect": "Weak",
         "colorChromeFXBlue": "Off",
         "developmentDynamicRange": 400,
@@ -38,10 +38,10 @@
         "grainSize": "Small",
         "highlightTone": "-1.5",
         "noiseReduction": "-4",
-        "shadowTone": " 0.5",
+        "shadowTone": "+0.5",
         "sharpness": "-2",
         "whiteBalance": "Daylight",
-        "whiteBalanceFineTune": "Red  4, Blue -5"
+        "whiteBalanceFineTune": "Red +4, Blue -5"
       },
       "sensor": "X-Trans V",
       "source": "https://fujixweekly.com/2023/10/24/kodak-gold-200-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"

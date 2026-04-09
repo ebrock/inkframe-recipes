@@ -16,6 +16,55 @@ from datetime import datetime, timezone
 
 REQUIRED_FIELDS = {"fingerprint", "name", "recipe"}
 
+NUMERIC_RECIPE_FIELDS = {
+    "highlightTone", "shadowTone", "color", "noiseReduction",
+    "sharpness", "clarity", "colorTemperature",
+}
+
+
+def normalize_numeric(value: str) -> str:
+    """Normalize a numeric string: strip whitespace, add '+' for positive values."""
+    v = value.strip()
+    try:
+        n = float(v)
+        if n > 0:
+            return f"+{v}"
+    except ValueError:
+        pass
+    return v
+
+
+def normalize_wb_fine_tune(value: str) -> str:
+    """Normalize 'Red  4, Blue -5' → 'Red +4, Blue -5'."""
+    parts = [p.strip() for p in value.split(",")]
+    normalized = []
+    for part in parts:
+        tokens = part.split()
+        if len(tokens) == 2:
+            label, num = tokens
+            num = num.strip()
+            try:
+                n = float(num)
+                if n > 0:
+                    num = f"+{num}"
+            except ValueError:
+                pass
+            normalized.append(f"{label} {num}")
+        else:
+            normalized.append(part)
+    return ", ".join(normalized)
+
+
+def normalize_recipe(recipe: dict) -> dict:
+    """Normalize recipe field values to use '+' for positive numbers."""
+    settings = recipe.get("recipe", {})
+    for field in NUMERIC_RECIPE_FIELDS:
+        if field in settings and isinstance(settings[field], str):
+            settings[field] = normalize_numeric(settings[field])
+    if "whiteBalanceFineTune" in settings:
+        settings["whiteBalanceFineTune"] = normalize_wb_fine_tune(settings["whiteBalanceFineTune"])
+    return recipe
+
 
 def extract_json_from_issue(body: str) -> dict:
     """Extract the first ```json ... ``` block from an issue body."""
@@ -81,6 +130,7 @@ def main():
     canonical = load_canonical(args.output)
     check_duplicate(canonical, recipe["fingerprint"])
 
+    recipe = normalize_recipe(recipe)
     canonical["recipes"].append(recipe)
     save_canonical(args.output, canonical)
 
