@@ -70,14 +70,12 @@ jobs:
             --head "$BRANCH")
           echo "url=${pr_url}" >> "$GITHUB_OUTPUT"
 
-      - name: Comment on issue
+      - name: Merge pull request
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
           PR_URL: ${{ steps.pr.outputs.url }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" \
-            --body "PR created: ${PR_URL}"
+          gh pr merge "$PR_URL" --squash --delete-branch
 
       - name: Comment on issue if workflow failed
         if: failure()
