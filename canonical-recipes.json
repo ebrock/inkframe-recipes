@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-09T20:03:43Z",
+  "updatedAt": "2026-04-11T17:26:25Z",
   "recipes": [
     {
       "fingerprint": "2dd574f31f858724",
@@ -68,6 +68,30 @@
       },
       "sensor": "X-Trans V",
       "source": "https://www.osan-bilgi.com/vibrant-astia-soft"
+    },
+    {
+      "fingerprint": "558c2903f6465024",
+      "name": "Pacific Blues",
+      "recipe": {
+        "clarity": "-3",
+        "color": "+4",
+        "colorChromeEffect": "Strong",
+        "colorChromeFXBlue": "Weak",
+        "colorTemperature": 5800,
+        "developmentDynamicRange": 400,
+        "dynamicRange": "Standard",
+        "filmSimulation": "Classic Neg",
+        "grainEffect": "Strong",
+        "grainSize": "Large",
+        "highlightTone": "-2",
+        "noiseReduction": "-4",
+        "shadowTone": "+3",
+        "sharpness": "-2",
+        "whiteBalance": "Kelvin",
+        "whiteBalanceFineTune": "Red +1, Blue -3"
+      },
+      "sensor": "X-Trans V",
+      "source": "https://fujixweekly.com/2022/12/06/pacific-blues-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
     }
   ]
 }
