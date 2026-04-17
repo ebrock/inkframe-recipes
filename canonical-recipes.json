@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-17T13:38:57Z",
+  "updatedAt": "2026-04-17T13:40:22Z",
   "recipes": [
     {
       "fingerprint": "2dd574f31f858724",
@@ -115,6 +115,29 @@
       },
       "sensor": "X-Trans V",
       "source": "https://filmsimrecipes.com/project/classic-cuban-neg/?srsltid=AfmBOoqzMvo2o07zeq4tzAPu_j0Wv5m8TX0X6kTrmd1YJ6MkSd7371hU"
+    },
+    {
+      "fingerprint": "23945565ea2f6f87",
+      "name": "Bright Kodak",
+      "recipe": {
+        "clarity": "-3",
+        "color": "+4",
+        "colorChromeEffect": "Off",
+        "colorChromeFXBlue": "Off",
+        "developmentDynamicRange": 400,
+        "dynamicRange": "Standard",
+        "filmSimulation": "Classic Chrome",
+        "grainEffect": "Strong",
+        "grainSize": "Large",
+        "highlightTone": "-2",
+        "noiseReduction": "-4",
+        "shadowTone": "-2",
+        "sharpness": "-2",
+        "whiteBalance": "Daylight",
+        "whiteBalanceFineTune": "Red +3, Blue -7"
+      },
+      "sensor": "X-Trans IV",
+      "source": "https://fujixweekly.com/2022/06/10/fujifilm-x-trans-iv-film-simulation-recipe-bright-kodak/"
     }
   ]
 }
