@@ -77,6 +77,13 @@ jobs:
         run: |
           gh pr merge "$PR_URL" --squash --delete-branch
 
+      - name: Close issue as completed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue close "$ISSUE_NUMBER" --reason completed
+
       - name: Comment on issue if workflow failed
         if: failure()
         env:
