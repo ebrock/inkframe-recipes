@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-17T13:40:22Z",
+  "updatedAt": "2026-04-17T21:58:01Z",
   "recipes": [
     {
       "fingerprint": "2dd574f31f858724",
@@ -138,6 +138,29 @@
       },
       "sensor": "X-Trans IV",
       "source": "https://fujixweekly.com/2022/06/10/fujifilm-x-trans-iv-film-simulation-recipe-bright-kodak/"
+    },
+    {
+      "fingerprint": "02984be734361cb7",
+      "name": "CubanAce",
+      "recipe": {
+        "clarity": "-4",
+        "color": "+1",
+        "colorChromeEffect": "Strong",
+        "colorChromeFXBlue": "Strong",
+        "developmentDynamicRange": 400,
+        "dynamicRange": "Standard",
+        "filmSimulation": "Reala Ace",
+        "grainEffect": "Strong",
+        "grainSize": "Large",
+        "highlightTone": "-2",
+        "noiseReduction": "-4",
+        "shadowTone": "+1.5",
+        "sharpness": "0",
+        "whiteBalance": "Auto",
+        "whiteBalanceFineTune": "Red +4, Blue -5"
+      },
+      "sensor": "X-Trans V",
+      "source": "https://www.osan-bilgi.com/cubanace"
     }
   ]
 }
