@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-11T17:26:25Z",
+  "updatedAt": "2026-04-17T13:38:57Z",
   "recipes": [
     {
       "fingerprint": "2dd574f31f858724",
@@ -92,6 +92,29 @@
       },
       "sensor": "X-Trans V",
       "source": "https://fujixweekly.com/2022/12/06/pacific-blues-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
+    },
+    {
+      "fingerprint": "b9a3c8cef5bd9252",
+      "name": "Classic Cuban Neg",
+      "recipe": {
+        "clarity": "-4",
+        "color": "+4",
+        "colorChromeEffect": "Strong",
+        "colorChromeFXBlue": "Strong",
+        "developmentDynamicRange": 400,
+        "dynamicRange": "Standard",
+        "filmSimulation": "Classic Neg",
+        "grainEffect": "Strong",
+        "grainSize": "Large",
+        "highlightTone": "-2",
+        "noiseReduction": "-4",
+        "shadowTone": "+1",
+        "sharpness": "0",
+        "whiteBalance": "Auto",
+        "whiteBalanceFineTune": "Red +4, Blue -5"
+      },
+      "sensor": "X-Trans V",
+      "source": "https://filmsimrecipes.com/project/classic-cuban-neg/?srsltid=AfmBOoqzMvo2o07zeq4tzAPu_j0Wv5m8TX0X6kTrmd1YJ6MkSd7371hU"
     }
   ]
 }
