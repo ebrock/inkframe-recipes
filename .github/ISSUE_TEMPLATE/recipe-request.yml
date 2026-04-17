@@ -7,7 +7,6 @@ body:
     attributes:
       value: |
         Export your recipe from InkFrame and paste the JSON below.
-        The fingerprint is computed automatically by InkFrame — no manual calculation needed.
 
   - type: input
     id: name
@@ -42,7 +41,7 @@ body:
     id: recipe_json
     attributes:
       label: Recipe JSON
-      description: Paste the full JSON exported from InkFrame. Must include `fingerprint`, `name`, and `recipe` fields.
+      description: Paste the full JSON exported from InkFrame. Must include `name` and `recipe` fields.
       render: json
     validations:
       required: true

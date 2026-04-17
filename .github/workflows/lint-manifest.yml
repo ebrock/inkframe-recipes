@@ -1,0 +1,16 @@
+name: Lint Manifest
+
+on:
+  pull_request:
+    paths:
+      - canonical-recipes.json
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate canonical-recipes.json
+        run: python3 .github/scripts/build_recipe.py lint canonical-recipes.json

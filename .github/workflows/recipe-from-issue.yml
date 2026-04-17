@@ -25,7 +25,7 @@ jobs:
       - name: Build recipe and update canonical-recipes.json
         id: build
         run: |
-          python3 .github/scripts/build_recipe.py \
+          python3 .github/scripts/build_recipe.py add \
             --issue-body /tmp/issue_body.txt \
             --output canonical-recipes.json
 

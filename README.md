@@ -77,7 +77,8 @@ All recipe fields are optional — only include settings that the recipe specifi
 | Field | Type | Values |
 |-------|------|--------|
 | `filmSimulation` | `String` | `Provia`, `Velvia`, `Astia Soft`, `Classic Chrome`, `Classic Neg`, `Nostalgic Neg`, `Eterna`, `Eterna Bleach Bypass`, `Reala Ace`, `Acros`, `Acros+R`, `Acros+G`, `Acros+Ye`, `Pro Neg Hi`, `Pro Neg Std`, `Sepia` |
-| `dynamicRange` | `String` | `Auto`, `DR100`, `DR200`, `DR400` |
+| `dynamicRange` | `String` | `Auto`, `Standard` (raw EXIF mode; use `developmentDynamicRange` for the DR level) |
+| `developmentDynamicRange` | `Int` | `100`, `200`, `400` — the active DR level when `dynamicRange` is `Standard` |
 | `highlightTone` | `String` | `-2` to `+4` (supports half steps like `-1.5`) |
 | `shadowTone` | `String` | `-2` to `+4` (supports half steps like `-1.5`) |
 | `color` | `String` | `-4` to `+4` |

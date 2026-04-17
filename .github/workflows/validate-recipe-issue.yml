@@ -1,0 +1,53 @@
+name: Validate Recipe Submission
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  validate:
+    if: startsWith(github.event.issue.title, 'Recipe:')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Write issue body to file
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$ISSUE_BODY" > /tmp/issue_body.txt
+
+      - name: Validate recipe schema
+        id: validate
+        run: |
+          if output=$(python3 .github/scripts/build_recipe.py validate \
+              --issue-body /tmp/issue_body.txt 2>&1); then
+            echo "valid=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "valid=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "errors<<EOF"
+              echo "$output"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Comment on validation failure
+        if: steps.validate.outputs.valid == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ERRORS: ${{ steps.validate.outputs.errors }}
+          REPO: ${{ github.repository }}
+        run: |
+          body="## Recipe schema validation failed
+
+          The recipe JSON in this issue has the following errors:
+
+          ${ERRORS}
+
+          See the [schema documentation](https://github.com/${REPO}#schema) for the correct format."
+          gh issue comment "$ISSUE_NUMBER" --body "$body"
