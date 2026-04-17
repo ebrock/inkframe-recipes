@@ -3,7 +3,6 @@
   "updatedAt": "2026-04-17T21:58:01Z",
   "recipes": [
     {
-      "fingerprint": "2dd574f31f858724",
       "name": "Reggie's Portra",
       "source": "https://fujixweekly.com/2022/06/11/fujifilm-x-trans-iv-film-simulation-recipe-reggies-portra/",
       "sensor": "X-Trans V",
@@ -24,7 +23,6 @@
       }
     },
     {
-      "fingerprint": "db9adedacdf1a0f5",
       "name": "Kodak Gold 200",
       "recipe": {
         "clarity": "-2",
@@ -47,7 +45,6 @@
       "source": "https://fujixweekly.com/2023/10/24/kodak-gold-200-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
     },
     {
-      "fingerprint": "02058b951017fcba",
       "name": "Vibrant Astia Soft",
       "recipe": {
         "clarity": "-4",
@@ -70,7 +67,6 @@
       "source": "https://www.osan-bilgi.com/vibrant-astia-soft"
     },
     {
-      "fingerprint": "558c2903f6465024",
       "name": "Pacific Blues",
       "recipe": {
         "clarity": "-3",
@@ -94,7 +90,6 @@
       "source": "https://fujixweekly.com/2022/12/06/pacific-blues-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
     },
     {
-      "fingerprint": "b9a3c8cef5bd9252",
       "name": "Classic Cuban Negative",
       "recipe": {
         "clarity": "-4",
@@ -117,7 +112,6 @@
       "source": "https://www.osan-bilgi.com/classic-cuban-negative"
     },
     {
-      "fingerprint": "23945565ea2f6f87",
       "name": "Bright Kodak",
       "recipe": {
         "clarity": "-3",

@@ -18,7 +18,6 @@ The app syncs from `canonical-recipes.json` on launch (once per 24 hours) and me
   "updatedAt": "2026-04-07T12:00:00Z",
   "recipes": [
     {
-      "fingerprint": "a1b2c3d4e5f6g7h8",
       "name": "Kodachrome 64",
       "source": "https://fujixweekly.com/...",
       "sensor": "X-Trans V",
@@ -55,7 +54,6 @@ The app syncs from `canonical-recipes.json` on launch (once per 24 hours) and me
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `fingerprint` | `String` | Yes | SHA-256 fingerprint (first 16 hex chars) computed from normalized recipe fields |
 | `name` | `String` | Yes | Human-readable recipe name |
 | `source` | `String` | No | URL where the recipe was published |
 | `sensor` | `String` | No | Target sensor generation (see below) |
@@ -94,23 +92,9 @@ All recipe fields are optional — only include settings that the recipe specifi
 | `whiteBalanceFineTune` | `String` | e.g. `Red +3, Blue -5` |
 | `colorTemperature` | `Int` | Kelvin value (e.g. `5800`) — used when `whiteBalance` is `Kelvin` |
 
-## Fingerprint computation
-
-Fingerprints are computed from normalized recipe values to ensure that equivalent settings always produce the same hash, regardless of how different cameras or tools format the values.
-
-1. **Normalize** each field: strip parenthetical descriptions (e.g. `-2 (soft)` becomes `-2`), snap numeric values to the nearest 0.5, remove sign prefixes on zero values, and treat `Off` / `nil` as empty
-2. **Concatenate** all fields in order with `|` as separator: `filmSimulation|dynamicRange|...|colorTemperature`
-3. **Hash** with SHA-256 and take the first 8 bytes (16 hex characters)
-
-Fields included in fingerprint (in order): `filmSimulation`, `dynamicRange`, `developmentDynamicRange`, `highlightTone`, `shadowTone`, `color`, `noiseReduction`, `sharpness`, `clarity`, `grainEffect`, `grainSize`, `colorChromeEffect`, `colorChromeFXBlue`, `whiteBalance`, `whiteBalanceFineTune`, `colorTemperature`.
-
-Per-shot fields (`iso`, `exposureCompensation`) are excluded — they vary between shots and would prevent matching photos taken with the same recipe under different conditions.
-
 ## Contributing
 
 To suggest a recipe, open an issue using the **Recipe Submission** template. Export the recipe JSON from InkFrame and paste it in. The maintainer will review and apply the `approved` label — a GitHub Action will handle the rest automatically.
-
-The sync service verifies fingerprint integrity on import — entries with mismatched fingerprints are silently skipped.
 
 ## Hosting your own canonical repo
 
