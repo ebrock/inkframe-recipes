@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-17T21:58:01Z",
+  "updatedAt": "2026-04-18T18:24:19Z",
   "recipes": [
     {
       "name": "Reggie's Portra",
@@ -155,6 +155,29 @@
       },
       "sensor": "X-Trans V",
       "source": "https://www.osan-bilgi.com/cubanace"
+    },
+    {
+      "name": "Kodak Gold",
+      "recipe": {
+        "clarity": "0",
+        "color": "+4",
+        "colorChromeEffect": "Strong",
+        "colorChromeFXBlue": "Strong",
+        "colorTemperature": 5100,
+        "developmentDynamicRange": 400,
+        "dynamicRange": "Standard",
+        "filmSimulation": "Classic Neg",
+        "grainEffect": "Strong",
+        "grainSize": "Small",
+        "highlightTone": "-2",
+        "noiseReduction": "-2",
+        "shadowTone": "-2",
+        "sharpness": "0",
+        "whiteBalance": "Kelvin",
+        "whiteBalanceFineTune": "Red +2, Blue -2"
+      },
+      "sensor": "X-Trans V",
+      "source": "https://www.scotttuckerphoto.com/blog/my-kodak-gold-200-recipe-for-fuji-cameras"
     }
   ]
 }
