@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-18T18:24:19Z",
+  "updatedAt": "2026-04-19T00:31:09Z",
   "recipes": [
     {
       "name": "Reggie's Portra",
@@ -178,6 +178,28 @@
       },
       "sensor": "X-Trans V",
       "source": "https://www.scotttuckerphoto.com/blog/my-kodak-gold-200-recipe-for-fuji-cameras"
+    },
+    {
+      "name": "Timeless Negative",
+      "recipe": {
+        "clarity": "-2",
+        "color": "-3",
+        "colorChromeEffect": "Strong",
+        "colorChromeFXBlue": "Off",
+        "developmentDynamicRange": 400,
+        "dynamicRange": "Standard",
+        "filmSimulation": "Nostalgic Neg",
+        "grainEffect": "Weak",
+        "grainSize": "Small",
+        "highlightTone": "+2",
+        "noiseReduction": "-4",
+        "shadowTone": "-2",
+        "sharpness": "0",
+        "whiteBalance": "Auto",
+        "whiteBalanceFineTune": "Red +2, Blue -3"
+      },
+      "sensor": "X-Trans V",
+      "source": "https://fujixweekly.com/2022/11/30/timeless-negative-fujifilm-x-t5-x-trans-v-film-simulation-recipe/"
     }
   ]
 }
